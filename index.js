@@ -14,8 +14,13 @@
  */
 function find(array, callback) {
   for (let element of array) {
-    // Write your code here.
+    const result = callback(element);
+
+    if (result === true) {
+      return element;
+    }
   }
+  return undefined;
 }
 
 /**
@@ -35,7 +40,11 @@ function find(array, callback) {
 function filter(array, callback) {
   const result = [];
   for (let element of array) {
-    // Write your code here.
+    const value = callback(element);
+
+    if (value === true) {
+      result.push(element);
+    }
   }
   return result;
 }
@@ -57,7 +66,8 @@ function filter(array, callback) {
 function map(array, callback) {
   const result = [];
   for (let element of array) {
-    // Write your code here.
+    const transformed = callback(element);
+    result.push(transformed);
   }
   return result;
 }
@@ -77,7 +87,7 @@ function map(array, callback) {
  */
 function forEach(array, callback) {
   for (let i = 0; i < array.length; i++) {
-    // Write your code here.
+    callback(array[i], i, array);
   }
 }
 
