@@ -13,9 +13,12 @@
  *  //> undefined
  */
 function find(array, callback) {
-  for (let element of array) {
-    // Write your code here.
+for (let i = 0; i < array.length; i++) {
+  if (callback(array[i])) {
+    return array[i];
   }
+}
+return undefined;
 }
 
 /**
@@ -33,10 +36,14 @@ function find(array, callback) {
  *  //> []
  */
 function filter(array, callback) {
-  const result = [];
-  for (let element of array) {
+ 
     // Write your code here.
-  }
+    const result = [];
+    for (let element of array) {
+      if (callback(element)) {
+        result.push(element);
+      }
+    }
   return result;
 }
 
@@ -55,12 +62,15 @@ function filter(array, callback) {
  *  //> []
  */
 function map(array, callback) {
-  const result = [];
+  
+    // Write your code here
+    const result = [];
   for (let element of array) {
-    // Write your code here.
+  result.push(callback(element));
   }
   return result;
 }
+
 
 /**
  * Does not return anything. Passes each element of the array into the callback along with the index and the array, in that order.
@@ -76,10 +86,11 @@ function map(array, callback) {
  *  //> 30 2 3
  */
 function forEach(array, callback) {
-  for (let i = 0; i < array.length; i++) {
     // Write your code here.
+   for (let i = 0; i < array.length; i++) {
+    callback(array[i], i, array);
+   }
   }
-}
 
 // Do not change the code below this line.
 module.exports = { find, filter, map, forEach };
